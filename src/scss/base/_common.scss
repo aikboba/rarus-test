@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+div,
+span,
+button,
+section,
+header {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ and Edge */
+  user-select: none; /* Standard syntax */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: grid;
+  grid-template-columns: $frame-sz;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background: $body-bg;
+  background-size: cover;
+  font-family: $primary-font;
+  font-size: $default-text-sz;
+  font-weight: 400;
+  color: $default-dark-txtc;
+
+  > div {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+a {
+  color: $default-lnk-clr;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.grid-2-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

@@ -1,0 +1,15 @@
+.feature-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  background: $separator-bg;
+  border-radius: $frame-br;
+  font-weight: 600;
+  color: $adv-dark-grey-txtc;
+}
+
+.thin-separator {
+  height: 1px;
+  background: $separator-bg;
+}

@@ -1,0 +1,66 @@
+.frame-block {
+  border-radius: $frame-br;
+}
+
+.frame-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 27px;
+  background: $frame-header-bg;
+  color: $default-light-txtc;
+
+  .header-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+
+
+  }
+  .header-back-lnk {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+
+    > span {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &:before {
+      content: url("~Images/back-arrow.svg");
+      margin-right: 8px;
+    }
+  }
+
+  + .frame-body {
+    margin-top: 16px;
+  }
+}
+
+.frame-body {
+  padding: 16px;
+  background: $frame-bg;
+}
+
+.single-frame {
+  padding: 16px;
+}
+
+.frame-section {
+  &:not(:first-child) {
+    margin-top: 26px;
+  }
+}
