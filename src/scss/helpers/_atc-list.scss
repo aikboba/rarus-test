@@ -5,32 +5,44 @@
   column-width: 244px;
   gap: 12px;
   font-size: 14px;
+  font-weight: 400;
+
+  &.compact {
+    column-width: 200px;
+
+    .list-item {
+
+      .list-item-inner {
+        padding-right: 12px;
+      }
+
+      &.selected {
+        .list-item-inner {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 
   .list-item {
     break-inside: avoid;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 30px;
-    padding-left: 12px;
-    padding-right: 4px;
-    border-radius: $list-item-br;
-    background: transparent;
-    line-height: 24px;
-    transition: background-color $common-trans;
-    cursor: pointer;
 
     &.selected {
-      background: $list-item-selected-bg;
-      color: $default-blue-txtc;
-      font-weight: 600;
+      .list-item-inner {
+        background: $list-item-selected-bg;
+        color: $default-blue-txtc;
+        font-weight: 600;
 
-      &:after {
-        content: "";
-        @extend .list-check;
+        &:after {
+          content: "";
+          @extend .list-check;
+        }
       }
     }
     &.list-item-title {
+      margin-bottom: 4px;
       font-size: 12px;
       line-height: 18px;
       color: $default-blue-txtc;
@@ -38,8 +50,24 @@
       cursor: default;
 
       &:not(:first-child) {
-        margin-top: 12px;
+        margin-top: 24px;
       }
+    }
+
+    .list-item-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 30px;
+      margin-left: -12px;
+      padding-left: 12px;
+      padding-right: 4px;
+      border-radius: $list-item-br;
+      overflow: hidden;
+      background: transparent;
+      line-height: 24px;
+      transition: background-color $common-trans;
+      cursor: pointer;
     }
 
     .list-item-name {

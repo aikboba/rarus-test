@@ -1,6 +1,7 @@
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -59,6 +60,7 @@ module.exports = {
                 { from: path.resolve(__dirname, 'src/data'), to: 'data/' },
             ],
         }),
+        new ESLintPlugin()
     ],
     devServer: {
         stats: 'errors-only'

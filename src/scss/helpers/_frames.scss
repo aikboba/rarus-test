@@ -1,5 +1,22 @@
 .frame-block {
+  position: relative;
   border-radius: $frame-br;
+  background: $frame-bg;
+
+  &.rounder {
+    border-radius: $frame-rounder-br;
+  }
+  &.triangled {
+    &:before {
+      content: url("~Images/triangle.svg");
+      position: absolute;
+      top: -15px;
+      left: 24px;
+    }
+  }
+  .shadow {
+    @extend .frame-shadow;
+  }
 }
 
 .frame-header {
@@ -52,7 +69,6 @@
 
 .frame-body {
   padding: 16px;
-  background: $frame-bg;
 }
 
 .single-frame {

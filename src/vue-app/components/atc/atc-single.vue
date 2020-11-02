@@ -5,7 +5,14 @@
         <ul class="no-list prop-val-list">
           <li class="list-item">
             <span class="prop">Модель АТС:</span>
-            <span class="val">{{atcObject['name']}}</span>
+            <span class="val">
+              <awesome-popup
+                  :asText="atcObject['name']" :asPopupIsOpened="asPopupIsOpened"
+                  v-on:open-handle="asPopupOpenHandle"
+              >
+                <atc-list v-on:atc-selected="atcListChange" isCompact />
+              </awesome-popup>
+            </span>
           </li>
           <li class="list-item">
             <span class="prop">Программа 1С:</span>
@@ -66,24 +73,46 @@
 </template>
 
 <script>
+import awesomePopup from '@app/components/awesome-popup/awesome-popup'
+import atcList from '@app/components/atc/atc-list'
+
 export default {
   name: "atc-single",
   data: () => ({
-    atcObject: null
+    atcObject: null,
+    asPopupIsOpened: false
   }),
+  components: {
+    awesomePopup,
+    atcList
+  },
+  methods: {
+    getItem() {
+      let _this = this;
+      //this.atcObject = null;
+
+      this.axios({
+        method: 'get',
+        url: '/data/atc-list.json',
+      })
+          .then(function (response) {
+            _this.atcObject = response.data.atc.find(x => x.id === +localStorage.getItem('atc-selected'));
+          })
+          .catch(function () {
+            return false;
+          });
+    },
+    atcListChange() {
+      this.asPopupIsOpened = false;
+      this.getItem();
+    },
+    asPopupOpenHandle(newVal) {
+      this.asPopupIsOpened = newVal;
+    }
+  },
   created() {
     let _this = this;
-
-    this.axios({
-      method: 'get',
-      url: '/data/atc-list.json',
-    })
-        .then(function (response) {
-          _this.atcObject = response.data.atc.find(x => x.id === +localStorage.getItem('atc-selected'));
-        })
-        .catch(function () {
-          return false;
-        });
+    setTimeout(() => _this.getItem(), 1000);//Fake delay
   }
 }
 </script>

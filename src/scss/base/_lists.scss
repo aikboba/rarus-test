@@ -16,6 +16,10 @@ ul {
     padding-left: 8px;
   }
   .list-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+
     &:not(:first-child) {
       margin-top: 10px;
     }

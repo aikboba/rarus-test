@@ -1,0 +1,42 @@
+.awesome-popup-wrap {
+  position: relative;
+
+  &.opened {
+    .as-text {
+      &:after {
+        top: -2px;
+        transform: rotate(0deg);
+      }
+    }
+
+    .awesome-popup {
+      display: block;
+    }
+  }
+
+  .as-text {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    color: $default-blue-txtc;
+    font-weight: 600;
+
+    &:after {
+      content: url("~Images/arrow-up.svg");
+      margin-left: 4px;
+      position: relative;
+      top: 2px;
+      transform: rotate(180deg);
+      transition: all $animate-trans;
+    }
+  }
+
+  .awesome-popup {
+    display: none;
+    width: 988px;
+    position: absolute;
+    top: 28px;
+    left: -28px;
+    z-index: $zi_popup;
+  }
+}
